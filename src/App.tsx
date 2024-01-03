@@ -2,6 +2,7 @@ import { FC } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Query, QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { MainTask } from "./components/MainTask";
 
 // queryClientの初期設定を作成
 const queryClient = new QueryClient({
@@ -20,6 +21,9 @@ const App: FC = () => {
             {/* react-queryを使用する為にqueryClientProviderでラップする */}
             <QueryClientProvider client={queryClient}>
                 <BrowserRouter>
+                    <Routes>
+                        <Route path="/" element={<MainTask />} />
+                    </Routes>
                 </BrowserRouter>
                 {/* ReactQueryDevtoolsを使用する */}
                 <ReactQueryDevtools initialIsOpen={false} />
