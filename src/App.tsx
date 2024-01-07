@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Query, QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { MainTask } from "./components/MainTask";
+import { MainTag } from "./components/MainTag";
 
 // queryClientの初期設定を作成
 const queryClient = new QueryClient({
@@ -23,6 +24,7 @@ const App: FC = () => {
                 <BrowserRouter>
                     <Routes>
                         <Route path="/" element={<MainTask />} />
+                        <Route path="/tag" element={<MainTag />} />
                     </Routes>
                 </BrowserRouter>
                 {/* ReactQueryDevtoolsを使用する */}

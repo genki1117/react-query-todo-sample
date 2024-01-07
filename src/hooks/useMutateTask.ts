@@ -36,7 +36,7 @@ export const useMutateTask = () => {
         // 更新したい新しいオブジェクトを引数で受け取る
         mutationFn: (task: EditTask) => 
             // axiosのputメソッドを実施し、第二引数に更新したいオブジェクトを指定する。
-            axios.put<Task>(`${process.env.REACT_APP_REST_URL}/tasks/`, task),
+            axios.put<Task>(`${process.env.REACT_APP_REST_URL}/tasks/${task.id}/`, task),
         
         // 第一引数のresにはaxiosの返り値が代入される。※今回作ったAPIだと更新内容のオブジェクトが代入される。
         // 第二引数にはaxiosに渡したオブジェクトが代入される

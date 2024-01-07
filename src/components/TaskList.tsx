@@ -1,9 +1,9 @@
 // taskの一覧を表示するコンポーネント
 import { FC, memo } from "react"
 import { useQueryTasks } from "../hooks/useQueryTasks"
-import { TaskItem } from "./TaskItem"
+import { TaskItemMemo } from "./TaskItem"
 
-export const TaskList: FC = () => {
+const TaskList: FC = () => {
     // useQueryを実行し、statusとdataを変数で受け取る
     // useQueryTaskでaxiosを実行しdataを取得しuseQueryでキャッシュdataを保存する
     // useQueryをそのままreturnしているので変数にはstatusとdataを受け取ることができる
@@ -16,10 +16,12 @@ export const TaskList: FC = () => {
             {data?.map((task) => (
                 <div key={task.id}>
                     <ul>
-                        <TaskItem task={task} />
+                        <TaskItemMemo task={task} />
                     </ul>
                 </div>
             ))}
         </div>
     )
 }
+
+export const TaskListMemo = memo(TaskList)
