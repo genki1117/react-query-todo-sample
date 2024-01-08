@@ -43,7 +43,7 @@ export const useMutateTag = () => {
     const updateTagMutation = useMutation({
         // putメソッドで更新用のエンドポイントにアクセスする
         // 第二引数に更新する新しいオブジェクトを指定する。
-        mutationFn: (tag: Tag) => axios.put<Tag>(`${process.env.REACT_APP_REST_URL}/tags/`, tag),
+        mutationFn: (tag: Tag) => axios.put<Tag>(`${process.env.REACT_APP_REST_URL}/tags/${tag.id}/`, tag),
 
         // 第一引数雨のresにはaxiosでアクセスしたエンドポイントの返り値が入る
         // 第二引数にはaxiosに渡したオブジェクト mutationFnの引数
@@ -61,6 +61,7 @@ export const useMutateTag = () => {
                 queryClient.setQueryData(
                     [`tags`], previousTags.map((tag) => tag.id === variables.id ? res.data : tag))
             }
+            dispatch(resetEditedTag())
         }
     })
 
